@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-gray-950 text-gray-100 font-sans antialiased;
+    @apply bg-gray-950 text-gray-100 font-sans antialiased relative;
     background-image:
       radial-gradient(at 27% 37%, hsla(270, 100%, 20%, 0.15) 0px, transparent 50%),
       radial-gradient(at 97% 21%, hsla(280, 100%, 25%, 0.1) 0px, transparent 50%),
@@ -16,6 +16,7 @@
 
   html {
     scroll-behavior: smooth;
+    position: relative;
   }
 }
 
