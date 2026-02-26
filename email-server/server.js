@@ -44,6 +44,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
   "http://localhost:5175",
+  'https://sakshamwayadande.in/'
 ];
 app.use(
   cors({
@@ -300,6 +301,7 @@ style="background:#ffffff;margin:40px 0;border-radius:8px;border:1px solid #e5e7
 // ─── Route: Health check ──────────────────────────────────────────────────────
 app.get("/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
+  console.log("[Health Check] Status OK");
 });
 
 // ─── Route: Contact form submission ──────────────────────────────────────────
