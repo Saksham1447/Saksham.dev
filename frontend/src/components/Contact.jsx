@@ -10,8 +10,8 @@ import {
   FaExclamationCircle,
 } from "react-icons/fa";
 
-// ─── API endpoint — update to your production URL when deploying ──────────────
-const API_URL = import.meta.env.VITE_EMAIL_API_URL || "http://localhost:5000/api/contact";
+// ─── API endpoint — uses Vercel serverless function ───────────────────────────
+const API_URL = "/api/contact";
 
 // ─── Inline CSS for animations (no extra deps needed) ────────────────────────
 const animStyles = `
@@ -106,9 +106,16 @@ const Contact = () => {
         body: JSON.stringify(form),
       });
 
-      const data = await res.json();
+      // Safely parse response — handle empty or non-JSON bodies
+      let data = {};
+      const text = await res.text();
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch {
+        // Response wasn't JSON
+      }
 
-      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      if (!res.ok) throw new Error(data.error || `Server error (${res.status}). Please try again.`);
 
       setStatus("success");
       setServerMsg(data.message || "Message sent!");

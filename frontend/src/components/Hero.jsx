@@ -69,9 +69,14 @@ const Hero = () => {
                                 Hire Me
                                 <HiArrowDown className="animate-bounce" />
                             </a>
-                            <a href="/resume.pdf" className="btn-secondary flex items-center gap-2" download>
+                            <a
+                                href="https://www.linkedin.com/in/saksham-wayadande-21a192316/"
+                                className="btn-secondary flex items-center gap-2"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 <FaDownload />
-                                Download CV
+                                Resume / CV
                             </a>
                         </motion.div>
 
